@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Seejuan's</title>
+        <style>
+            body{
+                font-family: Arial, Helvetica, sans-serif;
+                background-color: white;
+                color: beige;
+                margin: 0;
+                padding: 0;
+            }
+            header{
+                background-color: orangered;
+                color: azure;
+                padding: 1rem 0;
+                text-align: center;
+            }
+            .container{
+                max-width: 800px;
+                margin: 20px auto;
+                padding: 0 15px;
+            }
+            .post {
+                background-color: black;
+                margin-bottom: 20px;
+                padding: 20px;
+                border-radius: 8px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            }
+            .post h2 {
+                margin-top: 0;
+            }
+            .post p {
+                line-height: 1.6;
+            }
+            .add-post-form input,
+            .add-post-form textarea {
+                width: 100%;
+                padding: 10px;
+                margin: 10 px 0;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+            }
+            .add-post-form button {
+                background-color: blue;
+                color: black;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+            }
+            .add-post-form button:hover {
+                background-color: blue;
+    
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <h1>Seejuan's</h1>
+        </header>
+        <div class="container">
+            <div id="posts"></div>
+                <!-- Blog post will be appended here by Javascript -->
+        </div>
+        <div class="add-post-form">
+            <h2>Add a New Post</h2>
+            <input type="text" id="post-title" placeholder="Post Title">
+            <textarea id="post-content" rows="10" placeholder="Post Content"></textarea>
+            <button onclick="addPost()">Add Post</button>
+        </div>
+    </div>
+    <script>
+        function addPost() {
+            var title = document.getElementById('post-title').value;
+            var content = document.getElementById('post-content').value;
+
+            if (title && content) {
+                var postContainer = document.getElementById('posts');
+                var newPost = document.createElement('div');
+                newPost.className = 'post';
+                newPost.innerHTML = '<h2>' + title + '</h2><p>' + content + '</p>';
+
+                postContainer.appendChild(newPost);
+
+                // Clear the form fields after adding the post
+                document.getElementById('post-title').value = '';
+                document.getElementById('post-content').value = '';
+            } else {
+                alert('Please enter both a title and content.');
+            }
+        }
+    </script>
+    </body>
+</html>
+
